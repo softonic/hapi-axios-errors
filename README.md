@@ -1,21 +1,17 @@
-# {package-name}
+# {packageName}
 
-{package-description}
-
-Active maintainer: [{author-email}](mailto:{author-email}?subject={package-name})
+{packageDescription}
 
 ## Installation
 
 ```bash
-npm install {package-name}
+npm install {packageName}
 ```
 
 ## Usage
 
-```javascript
-import packageName from '{package-name}';
-
-// Example
+```js
+// Insert code example here
 ```
 
 ## Testing
@@ -28,7 +24,7 @@ npm test
 
 ## Contribute
 
-1. Fork it: `git clone ssh://git@stash.redtonic:7999/NODE/{package-name}.git`
+1. Fork it: `git clone {packageRepoCloneUrl}`
 2. Create your feature branch: `git checkout -b feature/my-new-feature`
 3. Commit your changes: `git commit -am 'Added some feature'`
 4. Check the build: `npm run build`
