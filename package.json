@@ -1,12 +1,18 @@
 {
-  "name": "{packageName}",
-  "version": "0.1.0",
-  "author": "{packageAuthorName} <{packageAuthorEmail}>",
-  "description": "{packageDescription}",
-  "keywords": [],
+  "name": "@softonic/hapi-axios-errors",
+  "version": "1.0.0",
+  "author": "Rubén Norte <ruben.norte@softonic.com>",
+  "description": "Hapi plugin to convert unhandled axios errors into boom errors",
+  "keywords": [
+    "hapi",
+    "axios",
+    "error",
+    "boom",
+    "normalize",
+    "map"
+  ],
   "license": "Apache-2.0",
   "main": "index.js",
-  "homepage": "{packageRepoUrl}",
   "files": [
     "es",
     "lib",
@@ -24,8 +30,7 @@
     "postrelease": "npm run push && npm publish",
     "push": "git push origin master && git push origin --tags"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.0",
@@ -34,13 +39,6 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jest": "^21.2.0",
     "jest": "^21.2.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "{packageRepoCloneUrl}"
-  },
-  "bugs": {
-    "url": "{packageIssuesUrl}"
   },
   "babel": {
     "presets": [
@@ -53,5 +51,10 @@
       "<rootDir>/node_modules/"
     ],
     "testRegex": "/__tests__/.*\\.spec\\.jsx?$"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/softonic-development/hapi-axios-errors.git"
+  },
+  "homepage": "https://bitbucket.org/softonic-development/hapi-axios-errors#readme"
 }

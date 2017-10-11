@@ -1,17 +1,25 @@
-# {packageName}
+# @softonic/hapi-axios-errors
 
-{packageDescription}
+Hapi plugin to convert unhandled axios errors into boom errors
 
 ## Installation
 
 ```bash
-npm install {packageName}
+npm install @softonic/hapi-axios-errors
 ```
 
 ## Usage
 
 ```js
-// Insert code example here
+// CommonJS
+// const HapiAxiosErrors = require('@softonic/hapi-axios-errors');
+
+// ES2015
+import HapiAxiosErrors from '@softonic/hapi-axios-errors';
+
+server.register([
+  HapiAxiosErrors
+]);
 ```
 
 ## Testing
@@ -24,7 +32,7 @@ npm test
 
 ## Contribute
 
-1. Fork it: `git clone {packageRepoCloneUrl}`
+1. Fork it: `git clone https://bitbucket.org/softonic-development/hapi-axios-errors.git`
 2. Create your feature branch: `git checkout -b feature/my-new-feature`
 3. Commit your changes: `git commit -am 'Added some feature'`
 4. Check the build: `npm run build`

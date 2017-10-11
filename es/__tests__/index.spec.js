@@ -1,6 +1,6 @@
 // import ... from '../index';
 
-describe('{packageName}', () => {
+describe('@softonic/hapi-axios-errors', () => {
   it('should be ...', () => {
   });
 });
