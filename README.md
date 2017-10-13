@@ -32,7 +32,7 @@ npm test
 
 ## Contribute
 
-1. Fork it: `git clone https://bitbucket.org/softonic-development/hapi-axios-errors.git`
+1. Fork it: `git clone https://github.com/softonic/hapi-axios-errors.git`
 2. Create your feature branch: `git checkout -b feature/my-new-feature`
 3. Commit your changes: `git commit -am 'Added some feature'`
 4. Check the build: `npm run build`

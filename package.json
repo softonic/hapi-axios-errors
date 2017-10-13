@@ -53,9 +53,15 @@
     ],
     "testRegex": "/__tests__/.*\\.spec\\.jsx?$"
   },
+  "directories": {
+    "lib": "lib"
+  },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/softonic-development/hapi-axios-errors.git"
+    "url": "git+https://github.com/softonic/hapi-axios-errors.git"
   },
-  "homepage": "https://bitbucket.org/softonic-development/hapi-axios-errors#readme"
+  "bugs": {
+    "url": "https://github.com/softonic/hapi-axios-errors/issues"
+  },
+  "homepage": "https://github.com/softonic/hapi-axios-errors#readme"
 }
