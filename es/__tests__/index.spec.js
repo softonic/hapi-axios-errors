@@ -1,6 +1,83 @@
-// import ... from '../index';
+import hapi from 'hapi';
+import HapiAxiosErrors from '../index';
 
-describe('@softonic/hapi-axios-errors', () => {
-  it('should be ...', () => {
+function createServerWithPlugin(options) {
+  const server = new hapi.Server();
+  server.connection();
+  server.register({
+    register: HapiAxiosErrors,
+    options,
+  });
+  return { server };
+}
+
+describe('HapiAxiosErrors', () => {
+  it('should be a Hapi plugin', () => {
+    expect(HapiAxiosErrors.register).toBeInstanceOf(Function);
+    expect(HapiAxiosErrors.register.attributes.pkg.name).toBe('@softonic/hapi-axios-errors');
+  });
+
+  describe('when it is registered', () => {
+    it('should ignore non-error responses', async () => {
+      const { server } = createServerWithPlugin();
+
+      server.route({
+        method: 'GET',
+        path: '/',
+        handler: (request, reply) => reply('ok'),
+      });
+
+      const response = await server.inject({
+        method: 'GET',
+        url: '/',
+      });
+
+      expect(response.statusCode).toBe(200);
+      expect(response.result).toBe('ok');
+    });
+
+    it('should ignore non-axios responses', async () => {
+      const { server } = createServerWithPlugin();
+
+      server.route({
+        method: 'GET',
+        path: '/error',
+        handler: (request, reply) => reply(new Error('foo')),
+      });
+
+      const notFoundResponse = await server.inject({
+        method: 'GET',
+        url: '/notFound',
+      });
+      expect(notFoundResponse.statusCode).toBe(404);
+
+      const errorResponse = await server.inject({
+        method: 'GET',
+        url: '/error',
+      });
+      expect(errorResponse.statusCode).toBe(500);
+    });
+
+    it('should propagate axios error status codes', async () => {
+      const { server } = createServerWithPlugin();
+
+      server.route({
+        method: 'GET',
+        path: '/',
+        handler: (request, reply) => {
+          const axiosError = new Error('Axios error');
+          axiosError.response = {
+            status: 400,
+          };
+          reply(axiosError);
+        },
+      });
+
+      const response = await server.inject({
+        method: 'GET',
+        url: '/',
+      });
+      expect(response.statusCode).toBe(400);
+    });
   });
 });

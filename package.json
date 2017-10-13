@@ -32,12 +32,14 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "axios": "^0.16.2",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "eslint": "^4.7.2",
     "eslint-config-airbnb-base": "^12.0.1",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jest": "^21.2.0",
+    "hapi": "^16.6.2",
     "jest": "^21.2.1"
   },
   "babel": {
