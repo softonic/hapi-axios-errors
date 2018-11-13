@@ -26,7 +26,7 @@ export default {
    * @param  {Object}       options
    * @param  {Function}     next
    */
-  register(server, options) {
+  register(server) {
     /**
      * Error handling
      */
