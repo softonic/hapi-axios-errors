@@ -18,32 +18,26 @@ function normalizeAxiosError(error) {
  * Hapi plugin to convert unhandled Axios errors into Boom errors
  * @type {Object}
  */
-const HapiAxiosErrors = {
+export default {
+  pkg: packageJSON,
+
   /**
    * @param  {hapi.Server}  server
    * @param  {Object}       options
    * @param  {Function}     next
    */
-  register(server, options, next) {
+  register(server, options) {
     /**
      * Error handling
      */
-    server.ext('onPreResponse', (request, reply) => {
+    server.ext('onPreResponse', (request, h) => {
       const { response } = request;
 
       if (response && response.isBoom) {
         normalizeAxiosError(response);
       }
 
-      return reply.continue();
+      return h.continue;
     });
-
-    next();
   },
 };
-
-HapiAxiosErrors.register.attributes = {
-  pkg: packageJSON,
-};
-
-export default HapiAxiosErrors;
