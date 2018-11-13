@@ -1,6 +1,6 @@
 {
   "name": "@softonic/hapi-axios-errors",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "Rubén Norte <ruben.norte@softonic.com>",
   "description": "Hapi plugin to convert unhandled axios errors into boom errors",
   "keywords": [
