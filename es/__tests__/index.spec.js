@@ -3,9 +3,9 @@ import HapiAxiosErrors from '../index';
 
 function createServerWithPlugin(options) {
   const server = new hapi.Server();
-  server.connection();
+
   server.register({
-    register: HapiAxiosErrors,
+    plugin: HapiAxiosErrors,
     options,
   });
   return { server };
@@ -14,7 +14,7 @@ function createServerWithPlugin(options) {
 describe('HapiAxiosErrors', () => {
   it('should be a Hapi plugin', () => {
     expect(HapiAxiosErrors.register).toBeInstanceOf(Function);
-    expect(HapiAxiosErrors.register.attributes.pkg.name).toBe('@softonic/hapi-axios-errors');
+    expect(HapiAxiosErrors.pkg.name).toBe('@softonic/hapi-axios-errors');
   });
 
   describe('when it is registered', () => {
@@ -24,7 +24,7 @@ describe('HapiAxiosErrors', () => {
       server.route({
         method: 'GET',
         path: '/',
-        handler: (request, reply) => reply('ok'),
+        handler: () => 'ok',
       });
 
       const response = await server.inject({
@@ -42,7 +42,7 @@ describe('HapiAxiosErrors', () => {
       server.route({
         method: 'GET',
         path: '/error',
-        handler: (request, reply) => reply(new Error('foo')),
+        handler: () => new Error('foo'),
       });
 
       const notFoundResponse = await server.inject({
@@ -64,12 +64,12 @@ describe('HapiAxiosErrors', () => {
       server.route({
         method: 'GET',
         path: '/',
-        handler: (request, reply) => {
+        handler: () => {
           const axiosError = new Error('Axios error');
           axiosError.response = {
             status: 400,
           };
-          reply(axiosError);
+          return axiosError;
         },
       });
 
