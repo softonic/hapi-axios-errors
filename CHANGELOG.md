@@ -12,3 +12,7 @@ Removed unused axios dependency
 ## [1.0.0] - 2017-10-11
 ### Added
 First project version
+
+## [2.0.0] - 2018-11-13
+### Modified
+Support to Hapi 17
