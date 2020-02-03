@@ -1,4 +1,4 @@
-import hapi from 'hapi';
+import hapi from '@hapi/hapi';
 import HapiAxiosErrors from '../index';
 
 function createServerWithPlugin(options) {
